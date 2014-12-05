@@ -8,8 +8,10 @@
 namespace Orc.GraphExplorer
 {
     using System;
+
     using Catel;
-    using Views.Base;
+
+    using Orc.GraphExplorer.Views.Base;
 
     public class EdgeViewCreatedEventArgs : EventArgs
     {

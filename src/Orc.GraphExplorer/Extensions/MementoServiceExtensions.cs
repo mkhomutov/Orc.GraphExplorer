@@ -1,21 +1,23 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="MementoServiceExtensions.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
+
 namespace Orc.GraphExplorer
 {
     using System.Linq;
 
     using Catel;
     using Catel.Memento;
-    using Operations;
+
     using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Operations;
 
     public static class MementoServiceExtensions
     {
+        #region Methods
         public static void ClearRedoBatches(this IMementoService mementoService)
         {
             if (mementoService.CanRedo)
@@ -53,5 +55,6 @@ namespace Orc.GraphExplorer
             var lastPart = description.Substring(1);
             StatusMessage.SendWith(firstLetter.ToUpper() + lastPart);
         }
+        #endregion
     }
 }

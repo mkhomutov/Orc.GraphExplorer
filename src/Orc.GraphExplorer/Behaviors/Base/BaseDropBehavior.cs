@@ -1,14 +1,14 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="BaseDropBehavior.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Behaviors.Base
 {
     using System.Windows;
+
     using Catel.MVVM.Views;
     using Catel.Windows.Interactivity;
 
@@ -82,7 +82,7 @@ namespace Orc.GraphExplorer.Behaviors.Base
                 return;
             }
 
-            Point pos = AssociatedObject.TranslatePoint(e.GetPosition(AssociatedObject), (UIElement) DropableContent);
+            Point pos = AssociatedObject.TranslatePoint(e.GetPosition(AssociatedObject), (UIElement)DropableContent);
             dropable.Drop(e.Data, pos);
         }
         #endregion

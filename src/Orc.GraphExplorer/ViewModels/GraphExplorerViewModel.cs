@@ -1,10 +1,9 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="GraphExplorerViewModel.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.ViewModels
 {
@@ -12,17 +11,18 @@ namespace Orc.GraphExplorer.ViewModels
     using System.Threading.Tasks;
 
     using Catel;
-    using Catel.Configuration;
     using Catel.MVVM;
-    using Factories;
-    using Messages;
-    using Models;
-    using Services;
+
+    using Orc.GraphExplorer.Factories;
+    using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Services;
 
     public class GraphExplorerViewModel : ViewModelBase
     {
         #region Fields
         private readonly IGraphDataService _graphDataService;
+
         private readonly IGraphExplorerFactory _graphExplorerFactory;
 
         private readonly INavigationService _navigationService;
@@ -49,8 +49,6 @@ namespace Orc.GraphExplorer.ViewModels
             ReadyToLoadGraphMessage.Register(this, OnReadyToLoadGraphMessage);
             NavigationMessage.Register(this, OnNavigationMessage);
         }
-
-
         #endregion
 
         #region Properties

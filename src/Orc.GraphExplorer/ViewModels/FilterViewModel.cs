@@ -1,10 +1,9 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="FilterViewModel.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.ViewModels
 {
@@ -12,10 +11,12 @@ namespace Orc.GraphExplorer.ViewModels
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.Linq;
+
     using Catel;
     using Catel.MVVM;
-    using Models;
-    using Models.Data;
+
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Models.Data;
 
     public class FilterViewModel : ViewModelBase
     {
@@ -40,29 +41,14 @@ namespace Orc.GraphExplorer.ViewModels
 
             ClearFilterCommand = new Command(OnClearFilterCommandExecute);
         }
-
-        void FilterableEntities_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            RawCollection = Enumerable.Empty<FilterableEntity>();
-            RawCollection = FilterableEntities;
-        }
-
         #endregion
 
+        #region Properties
         /// <summary>
         /// Gets the ClearFilterCommand command.
         /// </summary>
         public Command ClearFilterCommand { get; private set; }
 
-        /// <summary>
-        /// Method to invoke when the ClearFilterCommand command is executed.
-        /// </summary>
-        private void OnClearFilterCommandExecute()
-        {
-            IsFilterApplied = false;
-        }
-
-        #region Properties
         /// <summary>
         /// Gets or sets the property value.
         /// </summary>
@@ -103,6 +89,20 @@ namespace Orc.GraphExplorer.ViewModels
         #endregion
 
         #region Methods
+        private void FilterableEntities_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            RawCollection = Enumerable.Empty<FilterableEntity>();
+            RawCollection = FilterableEntities;
+        }
+
+        /// <summary>
+        /// Method to invoke when the ClearFilterCommand command is executed.
+        /// </summary>
+        private void OnClearFilterCommandExecute()
+        {
+            IsFilterApplied = false;
+        }
+
         private void FilteredEntities_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)

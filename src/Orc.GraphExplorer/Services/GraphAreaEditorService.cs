@@ -1,27 +1,29 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="GraphAreaEditorService.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Services
 {
     using System.Linq;
     using System.Threading.Tasks;
     using System.Windows;
+
     using Catel;
     using Catel.Memento;
     using Catel.Services;
-    using Messages;
-    using Models;
-    using Operations;
+
+    using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Operations;
 
     public class GraphAreaEditorService : IGraphAreaEditorService
     {
         #region Fields
         private readonly IMementoService _mementoService;
+
         private readonly IMessageService _messageService;
         #endregion
 
@@ -50,7 +52,7 @@ namespace Orc.GraphExplorer.Services
 
             dataSaver.SaveChanges(area.Logic.Graph);
 
-            area.IsInEditing = false;           
+            area.IsInEditing = false;
         }
 
         public void AddVertex(GraphArea area, DataVertex dataVertex, Point point)
@@ -91,7 +93,7 @@ namespace Orc.GraphExplorer.Services
             Argument.IsNotNull(() => vertex);
 
             _mementoService.ClearRedoBatches();
-            var operations = new OperationsBatch {Description = "remove vertex"};
+            var operations = new OperationsBatch { Description = "remove vertex" };
             var graph = area.Logic.Graph;
             foreach (var edge in graph.InEdges(vertex).Concat(graph.OutEdges(vertex)).ToArray())
             {

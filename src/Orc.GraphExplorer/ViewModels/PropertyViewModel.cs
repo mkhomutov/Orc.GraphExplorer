@@ -1,18 +1,19 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="PropertyViewModel.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.ViewModels
 {
     using System.ComponentModel;
+
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;
-    using Models;
+
+    using Orc.GraphExplorer.Models;
 
     public class PropertyViewModel : ViewModelBase
     {

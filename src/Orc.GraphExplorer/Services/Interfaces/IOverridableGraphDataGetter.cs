@@ -1,10 +1,10 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="IOverridableGraphDataGetter.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
+
 namespace Orc.GraphExplorer.Services
 {
     using System;
@@ -14,8 +14,10 @@ namespace Orc.GraphExplorer.Services
 
     public interface IOverridableGraphDataGetter
     {
+        #region Methods
         void RedefineVertecesGetter(Func<IEnumerable<DataVertex>> getter);
 
         void RedefineEdgesGetter(Func<IEnumerable<DataEdge>> getter);
+        #endregion
     }
 }

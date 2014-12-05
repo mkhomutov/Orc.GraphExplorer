@@ -1,17 +1,17 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="GraphExplorerFactory.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Factories
 {
     using Catel;
-    using Messages;
-    using Models;
-    using Services;
+
+    using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Services;
 
     public class GraphExplorerFactory : IGraphExplorerFactory
     {

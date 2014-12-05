@@ -1,21 +1,22 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="VertexViewModel.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.ViewModels
 {
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading.Tasks;
+
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;
-    using Models;
-    using Services;
+
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Services;
 
     public class VertexViewModel : ViewModelBase
     {
@@ -45,7 +46,10 @@ namespace Orc.GraphExplorer.ViewModels
         #region Properties
         public GraphAreaViewModel GraphAreaViewModel
         {
-            get { return base.ParentViewModel as GraphAreaViewModel; }
+            get
+            {
+                return base.ParentViewModel as GraphAreaViewModel;
+            }
         }
 
         /// <summary>
@@ -84,7 +88,10 @@ namespace Orc.GraphExplorer.ViewModels
 
         public GraphAreaViewModel AreaViewModel
         {
-            get { return ParentViewModel as GraphAreaViewModel; }
+            get
+            {
+                return ParentViewModel as GraphAreaViewModel;
+            }
         }
 
         /// <summary>

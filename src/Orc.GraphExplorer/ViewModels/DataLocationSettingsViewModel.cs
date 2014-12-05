@@ -1,27 +1,28 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="DataLocationSettingsViewModel.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.ViewModels
 {
     using System.Linq;
+
     using Catel;
-    using Catel.Configuration;
     using Catel.Fody;
     using Catel.MVVM;
     using Catel.Services;
-    using Messages;
-    using Models;
-    using Services;
+
+    using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Services;
 
     public class DataLocationSettingsViewModel : ViewModelBase
     {
         #region Fields
         private readonly IDataLocationSettingsService _dataLocationSettingsService;
+
         private readonly IOpenFileService _openFileService;
         #endregion
 
@@ -39,7 +40,6 @@ namespace Orc.GraphExplorer.ViewModels
             ChangeProperties = new Command(OnChangePropertiesExecute, () => EnableProperty ?? false);
             Save = new Command(OnSaveExecute);
         }
-
         #endregion
 
         #region Commands

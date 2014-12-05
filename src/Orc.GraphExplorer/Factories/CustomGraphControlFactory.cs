@@ -1,18 +1,20 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="CustomGraphControlFactory.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Factories
 {
     using System.Windows;
+
     using Catel;
+
     using GraphX;
     using GraphX.Controls.Models;
-    using Views;
+
+    using Orc.GraphExplorer.Views;
 
     public class CustomGraphControlFactory : IGraphControlFactory
     {
@@ -22,11 +24,7 @@ namespace Orc.GraphExplorer.Factories
             Argument.IsNotNull(() => source);
             Argument.IsNotNull(() => edge);
 
-            var edgeControl = new EdgeView(source, target, edge, showLabels, showArrows)
-            {
-                Visibility = visibility, 
-                RootArea = FactoryRootArea
-            };
+            var edgeControl = new EdgeView(source, target, edge, showLabels, showArrows) { Visibility = visibility, RootArea = FactoryRootArea };
             return edgeControl;
         }
 
@@ -34,7 +32,7 @@ namespace Orc.GraphExplorer.Factories
         {
             Argument.IsNotNull(() => vertexData);
 
-            var vertexControl = new VertexView(vertexData) {RootArea = FactoryRootArea,};
+            var vertexControl = new VertexView(vertexData) { RootArea = FactoryRootArea, };
             return vertexControl;
         }
 

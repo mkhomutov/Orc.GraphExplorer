@@ -1,26 +1,42 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="OperationsBatch.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
+
 namespace Orc.GraphExplorer.Operations
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Catel.Memento;
 
     using Orc.GraphExplorer.Messages;
 
     public class OperationsBatch : IOperation
     {
+        #region Fields
+        private readonly List<IOperation> _operations;
+        #endregion
+
+        #region Constructors
         public OperationsBatch()
         {
             _operations = new List<IOperation>();
             CanRedo = true;
         }
+        #endregion
 
+        #region Properties
+        public IEnumerable<IOperation> Operations
+        {
+            get
+            {
+                return _operations.AsEnumerable();
+            }
+        }
+        #endregion
+
+        #region IOperation Members
         public void Undo()
         {
             for (int i = _operations.Count - 1; i >= 0; i--)
@@ -39,9 +55,13 @@ namespace Orc.GraphExplorer.Operations
         }
 
         public object Target { get; private set; }
+
         public string Description { get; set; }
+
         public object Tag { get; set; }
+
         public bool CanRedo { get; private set; }
+
         public void Do()
         {
             foreach (var operation in _operations)
@@ -49,15 +69,13 @@ namespace Orc.GraphExplorer.Operations
                 operation.Do();
             }
         }
+        #endregion
 
-        private readonly List<IOperation> _operations;
-        public IEnumerable<IOperation> Operations {
-            get { return _operations.AsEnumerable(); }
-        }
-
+        #region Methods
         public void AddOperation(IOperation operation)
         {
             _operations.Add(operation);
         }
+        #endregion
     }
 }

@@ -1,10 +1,10 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="NavigationMessage.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
+
 namespace Orc.GraphExplorer.Messages
 {
     using Catel.Messaging;
@@ -13,6 +13,5 @@ namespace Orc.GraphExplorer.Messages
 
     public class NavigationMessage : MessageBase<NavigationMessage, DataVertex>
     {
-         
     }
 }

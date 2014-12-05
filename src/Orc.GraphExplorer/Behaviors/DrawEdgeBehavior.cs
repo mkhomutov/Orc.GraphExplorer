@@ -1,27 +1,31 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="DrawEdgeBehavior.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Behaviors
 {
     using System.Windows.Input;
+
     using Catel.Windows;
     using Catel.Windows.Interactivity;
+
     using GraphX.Controls;
     using GraphX.Models;
-    using Models;
-    using Views;
-    using Views.Base;
+
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Views;
+    using Orc.GraphExplorer.Views.Base;
 
     public class DrawEdgeBehavior : BehaviorBase<GraphAreaViewBase>
     {
         #region Fields
         private EdgeView _edge;
+
         private ZoomControl _zoomControl;
+
         private IEdgeDrawer _edgeDrawer;
         #endregion
 
@@ -77,7 +81,7 @@ namespace Orc.GraphExplorer.Behaviors
             {
                 return;
             }
-            var vertex = (DataVertex) args.VertexControl.Vertex;
+            var vertex = (DataVertex)args.VertexControl.Vertex;
             var startPoint = args.VertexControl.GetPosition();
             var lastPoint = ZoomControl.TranslatePoint(startPoint, AssociatedObject);
 

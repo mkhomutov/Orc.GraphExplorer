@@ -1,19 +1,21 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="DataEdge.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Models
 {
     using System.ComponentModel;
     using System.Windows;
+
     using Catel;
     using Catel.Data;
+
     using GraphX;
     using GraphX.Models.XmlSerializer;
+
     using YAXLib;
 
     [YAXSerializableType(FieldsToSerialize = YAXSerializationFields.AttributedFieldsOnly)]
@@ -81,13 +83,16 @@ namespace Orc.GraphExplorer.Models
         [YAXDontSerialize]
         public bool IsSelfLoop
         {
-            get { return Source.Equals(Target); }
+            get
+            {
+                return Source.Equals(Target);
+            }
         }
 
         /// <summary>
         /// Routing points collection used to make Path visual object
         /// </summary>
-        [YAXCustomSerializer(typeof (YAXPointArraySerializer))]
+        [YAXCustomSerializer(typeof(YAXPointArraySerializer))]
         public Point[] RoutingPoints { get; set; }
 
         public DataVertex Source { get; set; }

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DummyFacts.cs" company="Orcomp development team">
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace Orc.GraphExplorer.Test
+
+namespace Orc.GraphExplorer.Tests
 {
     using NUnit.Framework;
 
@@ -14,7 +15,6 @@ namespace Orc.GraphExplorer.Test
         [Test]
         public void DummyTest()
         {
-            
         }
     }
 }

@@ -1,16 +1,16 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="GraphNavigationBehavior.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Behaviors
 {
     using Catel.Windows.Interactivity;
-    using Views;
-    using Views.Base;
+
+    using Orc.GraphExplorer.Views;
+    using Orc.GraphExplorer.Views.Base;
 
     public class GraphNavigationBehavior : BehaviorBase<GraphAreaViewBase>
     {

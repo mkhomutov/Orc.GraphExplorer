@@ -1,17 +1,18 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="DragBehavior.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Behaviors
 {
     using System.Windows;
     using System.Windows.Input;
+
     using Catel.MVVM.Views;
     using Catel.Windows.Interactivity;
+
     using DragDrop = System.Windows.DragDrop;
 
     public class DragBehavior : BehaviorBase<FrameworkElement>

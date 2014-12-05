@@ -11,8 +11,11 @@ namespace Orc.GraphExplorer.Models
     using System.ComponentModel;
     using System.Globalization;
     using System.Windows.Media;
+
     using Catel.Data;
+
     using GraphX;
+
     using YAXLib;
 
     [YAXSerializableType(FieldsToSerialize = YAXSerializationFields.AttributedFieldsOnly)]
@@ -39,7 +42,10 @@ namespace Orc.GraphExplorer.Models
         #region Properties
         public static int FakeVertexId
         {
-            get { return -666; }
+            get
+            {
+                return -666;
+            }
         }
 
         /// <summary>

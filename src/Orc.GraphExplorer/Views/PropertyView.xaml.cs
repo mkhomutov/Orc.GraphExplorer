@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PropertyView.xaml.cs" company="Orcomp development team">
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
 
 namespace Orc.GraphExplorer.Views
 {
+    using System.Windows;
+
     using Catel.MVVM;
     using Catel.Windows;
 
@@ -24,11 +19,24 @@ namespace Orc.GraphExplorer.Views
     /// </summary>
     public partial class PropertyView
     {
+        #region Constructors
         public PropertyView()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Properties
+        public new PropertyViewModel ViewModel
+        {
+            get
+            {
+                return base.ViewModel as PropertyViewModel;
+            }
+        }
+        #endregion
+
+        #region Methods
         protected override void OnViewModelChanged()
         {
             DataContext = ViewModel;
@@ -38,7 +46,7 @@ namespace Orc.GraphExplorer.Views
             CloseViewModelOnUnloaded = false;
         }
 
-        void PropertyView_Loaded(object sender, RoutedEventArgs e)
+        private void PropertyView_Loaded(object sender, RoutedEventArgs e)
         {
             var viewModel = ViewModel;
 
@@ -49,12 +57,6 @@ namespace Orc.GraphExplorer.Views
                 relationalViewModel.SetParentViewModel(parentView.ViewModel);
             }
         }
-
-        public new PropertyViewModel ViewModel {
-            get
-            {
-                return base.ViewModel as PropertyViewModel;
-            }
-        }
+        #endregion
     }
 }

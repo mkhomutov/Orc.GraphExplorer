@@ -1,20 +1,21 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="GraphAreaLoadingService.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Services
 {
     using System.Threading.Tasks;
+
     using Catel;
     using Catel.Memento;
     using Catel.Services;
-    using Messages;
-    using Models;
-    using Models.Data;
+
+    using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Models.Data;
 
     public class GraphAreaLoadingService : IGraphAreaLoadingService
     {

@@ -1,21 +1,21 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="DragableButtonViewModel.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.ViewModels
 {
     using System;
     using System.Windows;
-    using Behaviors;
+
     using Catel;
     using Catel.MVVM;
-    using Factories;
-    using Models;
-    using Services;
+
+    using Orc.GraphExplorer.Behaviors;
+    using Orc.GraphExplorer.Factories;
+    using Orc.GraphExplorer.Models;
 
     public class DragableButtonViewModel : ViewModelBase, IDragable
     {
@@ -45,7 +45,10 @@ namespace Orc.GraphExplorer.ViewModels
 
         public Type DataType
         {
-            get { return typeof (DataVertex); }
+            get
+            {
+                return typeof(DataVertex);
+            }
         }
         #endregion
     }

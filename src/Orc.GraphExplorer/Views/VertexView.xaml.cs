@@ -1,19 +1,21 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="VertexView.xaml.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Views
 {
     using System.Windows;
+
     using Catel.MVVM;
     using Catel.MVVM.Views;
     using Catel.Windows;
+
     using GraphX;
-    using ViewModels;
+
+    using Orc.GraphExplorer.ViewModels;
 
     /// <summary>
     /// Логика взаимодействия для VertexView.xaml
@@ -32,41 +34,74 @@ namespace Orc.GraphExplorer.Views
         [ViewToViewModel]
         public bool IsHighlightEnabled
         {
-            get { return HighlightBehaviour.GetIsHighlightEnabled(this); }
-            set { HighlightBehaviour.SetIsHighlightEnabled(this, value); }
+            get
+            {
+                return HighlightBehaviour.GetIsHighlightEnabled(this);
+            }
+            set
+            {
+                HighlightBehaviour.SetIsHighlightEnabled(this, value);
+            }
         }
 
         [ViewToViewModel]
         public bool IsHighlighted
         {
-            get { return HighlightBehaviour.GetHighlighted(this); }
-            set { HighlightBehaviour.SetHighlighted(this, value); }
+            get
+            {
+                return HighlightBehaviour.GetHighlighted(this);
+            }
+            set
+            {
+                HighlightBehaviour.SetHighlighted(this, value);
+            }
         }
 
         [ViewToViewModel]
         public bool IsDragEnabled
         {
-            get { return DragBehaviour.GetIsDragEnabled(this); }
-            set { DragBehaviour.SetIsDragEnabled(this, value); }
+            get
+            {
+                return DragBehaviour.GetIsDragEnabled(this);
+            }
+            set
+            {
+                DragBehaviour.SetIsDragEnabled(this, value);
+            }
         }
 
         [ViewToViewModel]
         public new bool IsVisible
         {
-            get { return base.IsVisible; }
-            set { base.Visibility = value ? Visibility.Visible : Visibility.Hidden; }
+            get
+            {
+                return base.IsVisible;
+            }
+            set
+            {
+                base.Visibility = value ? Visibility.Visible : Visibility.Hidden;
+            }
         }
 
         [ViewToViewModel]
         public new bool IsEnabled
         {
-            get { return base.IsEnabled; }
-            set { base.IsEnabled = value; }
+            get
+            {
+                return base.IsEnabled;
+            }
+            set
+            {
+                base.IsEnabled = value;
+            }
         }
 
         public new VertexViewModel ViewModel
         {
-            get { return base.ViewModel; }
+            get
+            {
+                return base.ViewModel;
+            }
         }
         #endregion
 

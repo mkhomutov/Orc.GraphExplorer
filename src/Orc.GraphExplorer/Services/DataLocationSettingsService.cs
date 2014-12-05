@@ -1,29 +1,33 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="DataLocationSettingsService.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Services
 {
     using Catel;
     using Catel.Configuration;
     using Catel.Services;
-    using Models;
+
+    using Orc.GraphExplorer.Models;
 
     internal class DataLocationSettingsService : IDataLocationSettingsService
     {
         #region Constants
         private const string RelationshipsFile = "RelationshipsFile";
+
         private const string PropertiesFile = "PropertiesFile";
+
         private const string EnableProperty = "EnableProperty";
         #endregion
 
         #region Fields
         private readonly IOpenFileService _openFileService;
+
         private readonly IConfigurationService _configurationService;
+
         private DataLocationSettings _actualSettings;
         #endregion
 
@@ -41,12 +45,7 @@ namespace Orc.GraphExplorer.Services
         #region IDataLocationSettingsService Members
         public DataLocationSettings Load()
         {
-            _actualSettings = new DataLocationSettings()
-            {
-                RelationshipsFile = _configurationService.GetValue<string>(RelationshipsFile, @"Data\Relationships.csv"),
-                PropertiesFile = _configurationService.GetValue<string>(PropertiesFile, @"Data\Properties.csv"),
-                EnableProperty = _configurationService.GetValue<bool>(EnableProperty, false)
-            };
+            _actualSettings = new DataLocationSettings() { RelationshipsFile = _configurationService.GetValue<string>(RelationshipsFile, @"Data\Relationships.csv"), PropertiesFile = _configurationService.GetValue<string>(PropertiesFile, @"Data\Properties.csv"), EnableProperty = _configurationService.GetValue<bool>(EnableProperty, false) };
 
             return _actualSettings;
         }

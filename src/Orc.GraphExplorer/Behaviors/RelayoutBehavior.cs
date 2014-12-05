@@ -1,18 +1,20 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="RelayoutBehavior.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Behaviors
 {
     using System;
+
     using Catel.Windows;
     using Catel.Windows.Interactivity;
+
     using GraphX.Controls;
-    using Views.Base;
+
+    using Orc.GraphExplorer.Views.Base;
 
     public class RelayoutBehavior : BehaviorBase<GraphAreaViewBase>
     {

@@ -1,16 +1,18 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="IGraphExplorerFactory.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
+
 namespace Orc.GraphExplorer.Factories
 {
-    using Models;
+    using Orc.GraphExplorer.Models;
 
     public interface IGraphExplorerFactory
     {
+        #region Methods
         Explorer CreateExplorer();
+        #endregion
     }
 }

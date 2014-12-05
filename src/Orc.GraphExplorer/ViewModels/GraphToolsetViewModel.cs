@@ -1,29 +1,33 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="GraphToolsetViewModel.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.ViewModels
 {
     using System.ComponentModel;
+
     using Catel;
     using Catel.Fody;
     using Catel.Memento;
     using Catel.MVVM;
+
     using GraphX;
     using GraphX.Controls;
-    using Messages;
+
     using Microsoft.Win32;
-    using Models;
-    using Services;
+
+    using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Services;
 
     public class GraphToolsetViewModel : ViewModelBase
     {
         #region Fields
         private readonly IMementoService _mementoService;
+
         private readonly IGraphAreaEditorService _graphAreaEditorService;
 
         private readonly IGraphAreaLoadingService _graphAreaLoadingService;
@@ -132,7 +136,10 @@ namespace Orc.GraphExplorer.ViewModels
 
         public GraphExplorerViewModel GraphExplorer
         {
-            get { return ParentViewModel as GraphExplorerViewModel; }
+            get
+            {
+                return ParentViewModel as GraphExplorerViewModel;
+            }
         }
         #endregion
 
@@ -155,7 +162,7 @@ namespace Orc.GraphExplorer.ViewModels
         /// </summary>
         private void OnSaveToXmlExecute()
         {
-            var dlg = new SaveFileDialog {Filter = "All files|*.xml", Title = "Select layout file name", FileName = "overrall_layout.xml"};
+            var dlg = new SaveFileDialog { Filter = "All files|*.xml", Title = "Select layout file name", FileName = "overrall_layout.xml" };
             if (dlg.ShowDialog() == true)
             {
                 SaveToXmlMessage.SendWith(dlg.FileName, Toolset.ToolsetName);
@@ -167,7 +174,7 @@ namespace Orc.GraphExplorer.ViewModels
         /// </summary>
         private void OnLoadFromXmlExecute()
         {
-            var dlg = new OpenFileDialog {Filter = "All files|*.xml", Title = "Select layout file", FileName = "overrall_layout.xml"};
+            var dlg = new OpenFileDialog { Filter = "All files|*.xml", Title = "Select layout file", FileName = "overrall_layout.xml" };
             if (dlg.ShowDialog() == true)
             {
                 LoadFromXmlMessage.SendWith(dlg.FileName, Toolset.ToolsetName);

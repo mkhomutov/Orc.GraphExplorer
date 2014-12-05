@@ -1,15 +1,17 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="MainViewModel.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Demo.ViewModels
 {
+    using Catel;
     using Catel.MVVM;
-    using Messages;
+
+    using Orc.GraphExplorer.Messages;
+
     using Orchestra.Services;
 
     public class MainViewModel : ViewModelBase
@@ -21,6 +23,8 @@ namespace Orc.GraphExplorer.Demo.ViewModels
         #region Constructors
         public MainViewModel(IStatusService statusService)
         {
+            Argument.IsNotNull(() => statusService);
+
             _statusService = statusService;
             StatusMessage.Register(this, OnStatusMessage);
         }

@@ -1,30 +1,32 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="CsvGraphDataService.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Csv.Services
 {
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+
     using Catel;
     using Catel.Configuration;
 
     using CsvHelper;
-    using Data;
-    using Factories;
-    using GraphExplorer.Services;
-    using Models;
-    using Models.Data;
+
+    using Orc.GraphExplorer.Csv.Data;
+    using Orc.GraphExplorer.Factories;
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Models.Data;
+    using Orc.GraphExplorer.Services;
 
     public class CsvGraphDataService : IGraphDataService
     {
         #region Fields
         private readonly IDataVertexFactory _dataVertexFactory;
+
         private readonly IDataLocationSettingsService _dataLocationSettingsService;
 
         private readonly IConfigurationService _configurationService;
@@ -44,13 +46,6 @@ namespace Orc.GraphExplorer.Csv.Services
             _configurationService = configurationService;
 
             _configurationService.ConfigurationChanged += _configurationService_ConfigurationChanged;
-        }
-
-        void _configurationService_ConfigurationChanged(object sender, ConfigurationChangedEventArgs e)
-        {
-            _verticesWithProperties = null;
-            _verticesWithoutProperties = null;
-            _edges = null;
         }
         #endregion
 
@@ -122,7 +117,7 @@ namespace Orc.GraphExplorer.Csv.Services
                     writer.WriteHeader<RelationDataRecord>();
                     foreach (var edge in graph.Edges)
                     {
-                        writer.WriteRecord(new RelationDataRecord {From = edge.Source.ID, To = edge.Target.ID});
+                        writer.WriteRecord(new RelationDataRecord { From = edge.Source.ID, To = edge.Target.ID });
                     }
                 }
             }
@@ -134,7 +129,7 @@ namespace Orc.GraphExplorer.Csv.Services
                     using (var writer = new CsvWriter(new StreamWriter(fs)))
                     {
                         writer.WriteHeader<PropertyDataRecord>();
-                        foreach (var propertyData in graph.Vertices.SelectMany(x => x.Properties.Select(prop => new PropertyDataRecord {ID = x.ID, Property = prop.Key, Value = prop.Value})))
+                        foreach (var propertyData in graph.Vertices.SelectMany(x => x.Properties.Select(prop => new PropertyDataRecord { ID = x.ID, Property = prop.Key, Value = prop.Value })))
                         {
                             writer.WriteRecord(propertyData);
                         }
@@ -154,6 +149,13 @@ namespace Orc.GraphExplorer.Csv.Services
         #endregion
 
         #region Methods
+        private void _configurationService_ConfigurationChanged(object sender, ConfigurationChangedEventArgs e)
+        {
+            _verticesWithProperties = null;
+            _verticesWithoutProperties = null;
+            _edges = null;
+        }
+
         private IEnumerable<DataVertex> InitializeVertexProperties()
         {
             return LoadProperties().GroupBy(x => x.ID).Select(x =>
@@ -161,7 +163,7 @@ namespace Orc.GraphExplorer.Csv.Services
                 var vertex = _dataVertexFactory.CreateVertex(x.Key);
                 foreach (var record in x)
                 {
-                    vertex.Properties.Add(new Property() {Key = record.Property, Value = record.Value});
+                    vertex.Properties.Add(new Property() { Key = record.Property, Value = record.Value });
                 }
 
                 return vertex;
@@ -170,10 +172,7 @@ namespace Orc.GraphExplorer.Csv.Services
 
         private IEnumerable<DataEdge> InitializeEdges()
         {
-            return from relation in LoadRelations()
-                let @from = GetOrCreateVertex(relation.From)
-                let to = GetOrCreateVertex(relation.To)
-                select new DataEdge(@from, to);
+            return from relation in LoadRelations() let @from = GetOrCreateVertex(relation.From) let to = GetOrCreateVertex(relation.To) select new DataEdge(@from, to);
         }
 
         private DataVertex GetOrCreateVertex(int id)

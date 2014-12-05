@@ -1,16 +1,20 @@
-﻿// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="MahAppsService.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
 
 namespace Orc.GraphExplorer.Demo.Services
 {
     using System.Windows;
+
     using MahApps.Metro.Controls;
+
+    using Orc.GraphExplorer.Demo.Views;
+
     using Orchestra.Models;
     using Orchestra.Services;
-    using Views;
 
     public class MahAppsService : IMahAppsService
     {

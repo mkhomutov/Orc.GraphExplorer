@@ -3,15 +3,19 @@
 //   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
+
 namespace Orc.GraphExplorer.Extensions
 {
-    using Models;
+    using Orc.GraphExplorer.Models;
 
     public static class DataVertexExtensions
     {
+        #region Methods
         public static bool IsFakeVertex(this DataVertex vertex)
         {
             return vertex.ID == DataVertex.FakeVertexId;
         }
+        #endregion
     }
 }

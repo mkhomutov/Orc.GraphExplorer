@@ -1,21 +1,22 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="EdgeDrawingService.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Services
 {
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Media;
+
     using Catel;
-    using Factories;
-    using Messages;
-    using Models;
-    using Models.Data;
+
+    using Orc.GraphExplorer.Factories;
+    using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Models;
+    using Orc.GraphExplorer.Models.Data;
 
     public class EdgeDrawingService : IEdgeDrawingService
     {
@@ -23,8 +24,11 @@ namespace Orc.GraphExplorer.Services
         private readonly IDataVertexFactory _dataVertexFactory;
 
         private DataVertex _startVertex;
+
         private DataVertex _fakeEndVertex;
+
         private PathGeometry _pathGeometry;
+
         private Graph _graph;
         #endregion
 
@@ -52,16 +56,7 @@ namespace Orc.GraphExplorer.Services
             _startVertex = startVertex;
             _fakeEndVertex = _dataVertexFactory.CreateFakeVertex();
 
-            var pathFigureCollection = new PathFigureCollection
-            {
-                new PathFigure
-                {
-                    IsClosed = false, StartPoint = startPoint, Segments = new PathSegmentCollection
-                    {
-                        new PolyLineSegment(new List<Point> {new Point()}, true)
-                    }
-                }
-            };
+            var pathFigureCollection = new PathFigureCollection { new PathFigure { IsClosed = false, StartPoint = startPoint, Segments = new PathSegmentCollection { new PolyLineSegment(new List<Point> { new Point() }, true) } } };
             _pathGeometry = new PathGeometry(pathFigureCollection);
 
             SetLastPoint(lastPoint);

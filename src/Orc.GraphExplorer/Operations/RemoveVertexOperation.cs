@@ -1,27 +1,30 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="RemoveVertexOperation.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
+
 namespace Orc.GraphExplorer.Operations
 {
-    using System.Collections.Generic;
     using System.Windows;
 
     using Catel;
-    using Catel.Memento;
-    using Models;
 
     using Orc.GraphExplorer.Messages;
+    using Orc.GraphExplorer.Models;
 
     public class RemoveVertexOperation : IOperation
     {
+        #region Fields
         private readonly GraphArea _graphArea;
-        private readonly DataVertex _vertex;
-        private readonly Point _point;
 
+        private readonly DataVertex _vertex;
+
+        private readonly Point _point;
+        #endregion
+
+        #region Constructors
         public RemoveVertexOperation(GraphArea graphArea, DataVertex vertex)
         {
             Argument.IsNotNull(() => graphArea);
@@ -34,7 +37,7 @@ namespace Orc.GraphExplorer.Operations
             {
                 _point = (Point)vertex.Tag;
             }
-            else if(default(Point).Equals(_point))
+            else if (default(Point).Equals(_point))
             {
                 _point = new Point(_point.X, _point.Y);
             }
@@ -44,7 +47,9 @@ namespace Orc.GraphExplorer.Operations
 
             Description = "remove vertex";
         }
+        #endregion
 
+        #region IOperation Members
         public void Undo()
         {
             _vertex.Tag = _point;
@@ -61,12 +66,16 @@ namespace Orc.GraphExplorer.Operations
 
         public void Do()
         {
-            _graphArea.Logic.Graph.RemoveVertex(_vertex);            
+            _graphArea.Logic.Graph.RemoveVertex(_vertex);
         }
 
         public object Target { get; private set; }
+
         public string Description { get; set; }
+
         public object Tag { get; set; }
+
         public bool CanRedo { get; private set; }
+        #endregion
     }
 }

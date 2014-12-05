@@ -1,22 +1,17 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="DataVertexFactory.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Factories
 {
-    using Catel;
-    using Models;
-    using Services;
+    using Orc.GraphExplorer.Models;
 
     public class DataVertexFactory : IDataVertexFactory
     {
         #region Constants
-        
-
         private static int _maxId = 0;
         #endregion
 
@@ -40,7 +35,6 @@ namespace Orc.GraphExplorer.Factories
 
             return new DataVertex(id);
         }
-
         #endregion
     }
 }

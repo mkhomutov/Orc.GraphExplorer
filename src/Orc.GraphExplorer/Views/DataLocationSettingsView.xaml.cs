@@ -20,26 +20,6 @@ namespace Orc.GraphExplorer.Views
     /// </summary>
     public partial class DataLocationSettingsView
     {
-        // TODO: Replace this SettingApplied event
-        // Create a custom routed event by first registering a RoutedEventID 
-        // This event uses the bubbling routing strategy 
-        private static readonly RoutedEvent SettingAppliedEvent = EventManager.RegisterRoutedEvent(
-            "SettingApplied", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(DataLocationSettingsView));
-
-        // Provide CLR accessors for the event 
-        public event RoutedEventHandler SettingApplied
-        {
-            add { AddHandler(SettingAppliedEvent, value); }
-            remove { RemoveHandler(SettingAppliedEvent, value); }
-        }
-
-        // This method raises the Tap event 
-        void RaiseSettingAppliedEvent(bool neeedRefresh)
-        {
-            RoutedEventArgs newEventArgs = new SettingAppliedRoutedEventArgs(DataLocationSettingsView.SettingAppliedEvent, this, neeedRefresh);
-            RaiseEvent(newEventArgs);
-        }
-
         public DataLocationSettingsView()
         {
             InitializeComponent();

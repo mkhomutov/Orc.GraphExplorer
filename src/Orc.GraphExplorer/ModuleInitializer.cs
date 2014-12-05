@@ -21,7 +21,7 @@ public static class ModuleInitializer
         var serviceLocator = ServiceLocator.Default;
         serviceLocator.RegisterType<IDataLocationSettingsService, DataLocationSettingsService>();    
         serviceLocator.RegisterType<IGraphControlFactory, CustomGraphControlFactory>();
-        serviceLocator.RegisterType(typeof(IGraphDataGetter), typeof(CsvGraphDataService), GraphDataServiceEnum.Csv);
+        serviceLocator.RegisterType(typeof(IGraphDataGetter), typeof(CsvGraphDataService));
         serviceLocator.RegisterType<IMementoService, MementoService>();
         serviceLocator.RegisterType<IGraphAreaEditorService, GraphAreaEditorService>();
         serviceLocator.RegisterType<IGraphAreaLoadingService, GraphAreaLoadingService>();

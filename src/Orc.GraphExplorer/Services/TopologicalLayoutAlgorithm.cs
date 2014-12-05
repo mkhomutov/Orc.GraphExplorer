@@ -1,32 +1,35 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="TopologicalLayoutAlgorithm.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Services
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
+
     using Catel;
+
     using GraphX.GraphSharp.Algorithms.Layout;
     using GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical;
+
     using QuickGraph;
 
     public class TopologicalLayoutAlgorithm<TVertex, TEdge, TGraph> : IExternalLayout<TVertex>
-        where TVertex : class
-        where TEdge : IEdge<TVertex>
-        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
+        where TVertex : class where TEdge : IEdge<TVertex> where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
         #region Fields
         private readonly TGraph _graph;
 
         private readonly double _offsetX;
+
         private double _rate;
+
         private double _offsetY;
+
         private IDictionary<TVertex, Point> vertexPositions;
         #endregion
 
@@ -45,11 +48,7 @@ namespace Orc.GraphExplorer.Services
         #region IExternalLayout<TVertex> Members
         public void Compute()
         {
-            var eslaParameters = new EfficientSugiyamaLayoutParameters()
-            {
-                MinimizeEdgeLength = true,
-                LayerDistance = 80
-            };
+            var eslaParameters = new EfficientSugiyamaLayoutParameters() { MinimizeEdgeLength = true, LayerDistance = 80 };
 
             var esla = new EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>(_graph, eslaParameters, null, VertexSizes);
 
@@ -65,18 +64,24 @@ namespace Orc.GraphExplorer.Services
             //vertexPositions = esla.VertexPositions;
             foreach (var item in esla.VertexPositions)
             {
-                vertexPositions.Add(item.Key, new Point(item.Value.Y*1.5 + _offsetX, item.Value.X + _offsetY));
+                vertexPositions.Add(item.Key, new Point(item.Value.Y * 1.5 + _offsetX, item.Value.X + _offsetY));
             }
         }
 
         public bool NeedVertexSizes
         {
-            get { return true; }
+            get
+            {
+                return true;
+            }
         }
 
         public IDictionary<TVertex, Point> VertexPositions
         {
-            get { return vertexPositions; }
+            get
+            {
+                return vertexPositions;
+            }
         }
 
         public IDictionary<TVertex, Size> VertexSizes { get; set; }

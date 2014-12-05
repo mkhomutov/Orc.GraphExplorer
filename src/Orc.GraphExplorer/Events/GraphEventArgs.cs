@@ -8,8 +8,10 @@
 namespace Orc.GraphExplorer
 {
     using System;
+
     using Catel;
-    using Models.Data;
+
+    using Orc.GraphExplorer.Models.Data;
 
     public class GraphEventArgs : EventArgs
     {

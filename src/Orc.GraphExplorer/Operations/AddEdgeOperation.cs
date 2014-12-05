@@ -1,24 +1,26 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="AddEdgeOperation.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
+
 namespace Orc.GraphExplorer.Operations
 {
     using Catel;
-    using Catel.Memento;
 
     using Orc.GraphExplorer.Messages;
     using Orc.GraphExplorer.Models;
 
     public class AddEdgeOperation : IOperation
     {
+        #region Fields
         private readonly GraphArea _graphArea;
 
         private readonly DataEdge _edge;
+        #endregion
 
+        #region Constructors
         public AddEdgeOperation(GraphArea graphArea, DataEdge edge)
         {
             Argument.IsNotNull(() => graphArea);
@@ -29,7 +31,9 @@ namespace Orc.GraphExplorer.Operations
             CanRedo = true;
             Description = "add egde";
         }
+        #endregion
 
+        #region IOperation Members
         public void Undo()
         {
             _graphArea.Logic.Graph.RemoveEdge(_edge);
@@ -52,8 +56,9 @@ namespace Orc.GraphExplorer.Operations
         public bool CanRedo { get; private set; }
 
         public void Do()
-        {            
+        {
             _graphArea.Logic.Graph.AddEdge(_edge);
         }
+        #endregion
     }
 }

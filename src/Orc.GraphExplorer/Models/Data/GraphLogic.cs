@@ -1,23 +1,27 @@
-﻿#region Copyright (c) 2014 Orcomp development team.
-// -------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="GraphLogic.cs" company="Orcomp development team">
-//   Copyright (c) 2014 Orcomp development team. All rights reserved.
+//   Copyright (c) 2008 - 2014 Orcomp development team. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-#endregion
+
 
 namespace Orc.GraphExplorer.Models.Data
 {
     using System;
+
     using Catel;
+
     using GraphX.Logic;
 
     public class GraphLogic : GXLogicCore<DataVertex, DataEdge, Graph>
     {
+        #region Constructors
         public GraphLogic()
         {
         }
+        #endregion
 
+        #region Methods
         public void PrepareGraphReloading()
         {
             BeforeReloadingGraph.SafeInvoke(this);
@@ -29,8 +33,10 @@ namespace Orc.GraphExplorer.Models.Data
 
             GraphReloaded.SafeInvoke(this, new GraphEventArgs(graph));
         }
+        #endregion
 
         public event EventHandler BeforeReloadingGraph;
+
         public event EventHandler<GraphEventArgs> GraphReloaded;
     }
 }

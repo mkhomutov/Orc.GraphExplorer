@@ -7,7 +7,7 @@
 
 namespace Orc.GraphExplorer
 {
-    using Models;
+    using Orc.GraphExplorer.Models;
 
     public static class DataEdgeExtensions
     {
