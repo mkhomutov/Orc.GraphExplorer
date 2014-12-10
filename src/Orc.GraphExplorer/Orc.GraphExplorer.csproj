@@ -121,6 +121,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionAssemblyInfo.cs">
+      <Link>Properties\SolutionAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Behaviors\DrawEdgeBehavior.cs" />
     <Compile Include="Behaviors\Base\BaseDropBehavior.cs" />
     <Compile Include="Behaviors\DragBehavior.cs" />
