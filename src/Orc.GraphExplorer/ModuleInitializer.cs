@@ -1,9 +1,11 @@
-﻿using Catel.IoC;
+﻿using System;
+using Catel.IoC;
 
 using Orc.GraphExplorer;
 using Orc.GraphExplorer.Csv.Services;
 using Orc.GraphExplorer.Factories;
 using Orc.GraphExplorer.Services;
+using Orc.GraphExplorer.Models;
 using GraphX.Controls.Models;
 
 using Catel.Memento;
@@ -29,6 +31,14 @@ public static class ModuleInitializer
         serviceLocator.RegisterType<IDataVertexFactory, DataVertexFactory>();
         serviceLocator.RegisterType<IGraphDataService, CsvGraphDataService>();
         serviceLocator.RegisterType<IGraphExplorerFactory, GraphExplorerFactory>();
-        serviceLocator.RegisterType<INavigationService, NavigationService>();       
+        serviceLocator.RegisterType<INavigationService, NavigationService>();
+        serviceLocator.RegisterType<Explorer>(CreateExplorer);
+    }
+
+    private static Explorer CreateExplorer(ServiceLocatorRegistration serviceLocatorRegistration)
+    {
+        var serviceLocator = ServiceLocator.Default;
+        var factory = serviceLocator.ResolveType<IGraphExplorerFactory>();
+        return factory.CreateExplorer();
     }
 }

@@ -131,7 +131,6 @@
     <Compile Include="Behaviors\Interfaces\IDragable.cs" />
     <Compile Include="Behaviors\Interfaces\IDropable.cs" />
     <Compile Include="Behaviors\Interfaces\IFilterable.cs" />
-    <Compile Include="Behaviors\Interfaces\IGraphNavigator.cs" />
     <Compile Include="Behaviors\RelayoutBehavior.cs" />
     <Compile Include="Behaviors\ZoomDropBehavior.cs" />
     <Compile Include="Events\EdgeViewCreatedEventArgs.cs" />
@@ -146,7 +145,6 @@
     <Compile Include="Messages\GraphChangedMessage.cs" />
     <Compile Include="Messages\EditingStartStopMessage.cs" />
     <Compile Include="Messages\LoadFromXmlMessage.cs" />
-    <Compile Include="Messages\NavigationMessage.cs" />
     <Compile Include="Messages\ReadyToLoadGraphMessage.cs" />
     <Compile Include="Messages\SaveToImageMessage.cs" />
     <Compile Include="Messages\SaveToXmlMessage.cs" />

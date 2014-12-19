@@ -22,7 +22,7 @@ namespace Orc.GraphExplorer.ViewModels
     using Orc.GraphExplorer.Models.Data;
     using Orc.GraphExplorer.Services;
 
-    public class GraphAreaViewModel : ViewModelBase, IDropable, IGraphNavigator, IFilterable, IGraphLogicProvider, IEdgeDrawer
+    public class GraphAreaViewModel : ViewModelBase, IDropable, IFilterable, IGraphLogicProvider, IEdgeDrawer
     {
         #region Fields
         private readonly IViewModelManager _viewModelManager;
@@ -32,6 +32,7 @@ namespace Orc.GraphExplorer.ViewModels
         private readonly IEdgeDrawingService _edgeDrawingService;
 
         private readonly IGraphAreaLoadingService _graphAreaLoadingService;
+        private readonly INavigationService _navigationService;
         #endregion
 
         #region Constructors
@@ -39,7 +40,7 @@ namespace Orc.GraphExplorer.ViewModels
         {
         }
 
-        public GraphAreaViewModel(GraphArea area, IViewModelManager viewModelManager, IGraphAreaEditorService graphAreaEditorService, IEdgeDrawingService edgeDrawingService, IGraphAreaLoadingService graphAreaLoadingService)
+        public GraphAreaViewModel(GraphArea area, IViewModelManager viewModelManager, IGraphAreaEditorService graphAreaEditorService, IEdgeDrawingService edgeDrawingService, IGraphAreaLoadingService graphAreaLoadingService, INavigationService navigationService)
         {
             Argument.IsNotNull(() => area);
             Argument.IsNotNull(() => viewModelManager);
@@ -51,6 +52,7 @@ namespace Orc.GraphExplorer.ViewModels
             _graphAreaEditorService = graphAreaEditorService;
             _edgeDrawingService = edgeDrawingService;
             _graphAreaLoadingService = graphAreaLoadingService;
+            _navigationService = navigationService;
             Area = area;
 
             SettingsChangedMessage.Register(this, OnSettingsChangedMessage);
@@ -104,6 +106,7 @@ namespace Orc.GraphExplorer.ViewModels
                 return !IsInEditing;
             }
         }
+
         #endregion
 
         #region IDropable Members
@@ -194,18 +197,6 @@ namespace Orc.GraphExplorer.ViewModels
         /// </summary>
         [ViewModelToModel("Area")]
         public GraphLogic Logic { get; set; }
-        #endregion
-
-        #region IGraphNavigator Members
-        public void NavigateTo(DataVertex dataVertex)
-        {
-            Argument.IsNotNull(() => dataVertex);
-
-            if (!IsInEditing)
-            {
-                NavigationMessage.SendWith(dataVertex);
-            }
-        }
         #endregion
 
         #region Methods

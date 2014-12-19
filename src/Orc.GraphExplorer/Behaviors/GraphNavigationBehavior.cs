@@ -7,15 +7,18 @@
 
 namespace Orc.GraphExplorer.Behaviors
 {
+    using Catel.IoC;
     using Catel.Windows.Interactivity;
 
     using Orc.GraphExplorer.Views;
     using Orc.GraphExplorer.Views.Base;
+    using Services;
+    using ViewModels;
 
     public class GraphNavigationBehavior : BehaviorBase<GraphAreaViewBase>
     {
         #region Fields
-        private IGraphNavigator _navigator;
+        private INavigationService _navigationService;
         #endregion
 
         #region Methods
@@ -23,15 +26,18 @@ namespace Orc.GraphExplorer.Behaviors
         {
             base.OnAssociatedObjectLoaded();
 
-            _navigator = AssociatedObject.ViewModel as IGraphNavigator;
-
-            if (_navigator == null)
-            {
-                return;
-            }
-
+            var serviceLocator = AssociatedObject.ViewModel.GetServiceLocator();// as IGraphNavigator;
+            _navigationService = serviceLocator.ResolveType<INavigationService>();
+            
             AssociatedObject.VertexDoubleClick += AssociatedObject_VertexDoubleClick;
         }
+
+        protected override void OnAssociatedObjectUnloaded()
+        {
+            AssociatedObject.VertexDoubleClick -= AssociatedObject_VertexDoubleClick;
+        }
+
+        private GraphAreaViewModel GraphAreaViewModel { get { return AssociatedObject.ViewModel as GraphAreaViewModel; } }
 
         private void AssociatedObject_VertexDoubleClick(object sender, GraphX.Models.VertexSelectedEventArgs args)
         {
@@ -41,7 +47,15 @@ namespace Orc.GraphExplorer.Behaviors
                 return;
             }
 
-            _navigator.NavigateTo(vertexView.ViewModel.DataVertex);
+            if (GraphAreaViewModel == null)
+            {
+                return;
+            }
+
+            if (GraphAreaViewModel.CanNavigate)
+            {
+                _navigationService.NavigateTo(vertexView.ViewModel.DataVertex);
+            }
         }
         #endregion
     }

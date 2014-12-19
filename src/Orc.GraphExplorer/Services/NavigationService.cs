@@ -9,28 +9,33 @@ namespace Orc.GraphExplorer.Services
 {
     using System.Collections.Generic;
     using System.Linq;
-
     using Catel;
-    using Catel.IoC;
-
     using GraphX.GraphSharp;
-
-    using Orc.GraphExplorer.Models;
+    using Models;
 
     public class NavigationService : INavigationService
     {
-        #region INavigationService Members
-        public void NavigateTo(Explorer explorer, DataVertex dataVertex)
+        private readonly Explorer _explorer;
+        private readonly IGraphAreaLoadingService _loadingService;
+
+        public NavigationService(Explorer explorer, IGraphAreaLoadingService loadingService)
         {
             Argument.IsNotNull(() => explorer);
+            Argument.IsNotNull(() => loadingService);
+
+            _explorer = explorer;
+            _loadingService = loadingService;
+        }
+
+        #region INavigationService Members
+        public void NavigateTo(DataVertex dataVertex)
+        {
             Argument.IsNotNull(() => dataVertex);
 
-            explorer.IsNavTabVisible = true;
-            explorer.IsNavTabSelected = true;
+            _explorer.IsNavTabVisible = true;
+            _explorer.IsNavTabSelected = true;
 
-            var loadingService = this.GetServiceLocator().ResolveType<IGraphAreaLoadingService>();
-
-            var navigatorArea = explorer.NavigatorToolset.Area;
+            var navigatorArea = _explorer.NavigatorToolset.Area;
 
             IEnumerable<DataEdge> inEdges;
             IEnumerable<DataEdge> outEdges;
@@ -40,7 +45,7 @@ namespace Orc.GraphExplorer.Services
             {
                 return;
             }
-            var graph = explorer.EditorToolset.Area.Logic.Graph;
+            var graph = _explorer.EditorToolset.Area.Logic.Graph;
 
             if (!graph.TryGetInEdges(dataVertex, out inEdges) || !graph.TryGetOutEdges(dataVertex, out outEdges))
             {
@@ -54,9 +59,9 @@ namespace Orc.GraphExplorer.Services
             graphDataGetter.RedefineEdgesGetter(() => edges);
             graphDataGetter.RedefineVertecesGetter(() => vertices);
 
-            loadingService.ReloadGraphArea(navigatorArea, 0);
+            _loadingService.ReloadGraphArea(navigatorArea, 0);
 
-            loadingService.TryRefresh(navigatorArea);
+            _loadingService.TryRefresh(navigatorArea);
         }
         #endregion
     }

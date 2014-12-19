@@ -29,7 +29,7 @@ namespace Orc.GraphExplorer.ViewModels
         #endregion
 
         #region Constructors
-        public GraphExplorerViewModel(IGraphDataService graphDataService, IGraphExplorerFactory graphExplorerFactory, INavigationService navigationService)
+        public GraphExplorerViewModel(Explorer explorer, IGraphDataService graphDataService, IGraphExplorerFactory graphExplorerFactory, INavigationService navigationService)
         {
             Argument.IsNotNull(() => graphDataService);
             Argument.IsNotNull(() => graphExplorerFactory);
@@ -39,7 +39,7 @@ namespace Orc.GraphExplorer.ViewModels
             _graphExplorerFactory = graphExplorerFactory;
             _navigationService = navigationService;
 
-            Explorer = _graphExplorerFactory.CreateExplorer();
+            Explorer = explorer;
 
             CloseNavTabCommand = new Command(OnCloseNavTabCommandExecute);
 
@@ -47,7 +47,6 @@ namespace Orc.GraphExplorer.ViewModels
 
             EditingStartStopMessage.Register(this, OnEditingStartStopMessage, Explorer.EditorToolset.ToolsetName);
             ReadyToLoadGraphMessage.Register(this, OnReadyToLoadGraphMessage);
-            NavigationMessage.Register(this, OnNavigationMessage);
         }
         #endregion
 
@@ -114,10 +113,6 @@ namespace Orc.GraphExplorer.ViewModels
         #endregion
 
         #region Methods
-        private void OnNavigationMessage(NavigationMessage message)
-        {
-            _navigationService.NavigateTo(Explorer, message.Data);
-        }
 
         private void OnReadyToLoadGraphMessage(ReadyToLoadGraphMessage message)
         {

@@ -13,6 +13,10 @@ namespace Orc.GraphExplorer.Models
 
     public class Explorer : ModelBase
     {
+        public Explorer()
+        {
+            
+        }
         #region Properties
         /// <summary>
         /// Gets or sets the property value.

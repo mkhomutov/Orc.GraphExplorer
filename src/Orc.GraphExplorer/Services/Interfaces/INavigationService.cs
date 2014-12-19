@@ -12,7 +12,7 @@ namespace Orc.GraphExplorer.Services
     public interface INavigationService
     {
         #region Methods
-        void NavigateTo(Explorer explorer, DataVertex dataVertex);
+        void NavigateTo(DataVertex dataVertex);
         #endregion
     }
 }
