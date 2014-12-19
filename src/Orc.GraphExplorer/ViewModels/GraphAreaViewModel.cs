@@ -22,7 +22,7 @@ namespace Orc.GraphExplorer.ViewModels
     using Orc.GraphExplorer.Models.Data;
     using Orc.GraphExplorer.Services;
 
-    public class GraphAreaViewModel : ViewModelBase, IDropable, IFilterable, IGraphLogicProvider, IEdgeDrawer
+    public class GraphAreaViewModel : ViewModelBase, IDropable, IGraphLogicProvider, IEdgeDrawer
     {
         #region Fields
         private readonly IViewModelManager _viewModelManager;
@@ -177,17 +177,6 @@ namespace Orc.GraphExplorer.ViewModels
         public PathGeometry GetEdgeGeometry()
         {
             return _edgeDrawingService.GetEdgeGeometry();
-        }
-        #endregion
-
-        #region IFilterable Members
-        public void UpdateFilterSource()
-        {
-            if (ToolSetViewModel != null)
-            {
-                var filter = ToolSetViewModel.Toolset.Filter;
-                filter.ChangeFilterSource(filter.GraphLogic.Graph.Vertices);
-            }
         }
         #endregion
 

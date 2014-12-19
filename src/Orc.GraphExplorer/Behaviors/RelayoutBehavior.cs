@@ -13,8 +13,9 @@ namespace Orc.GraphExplorer.Behaviors
     using Catel.Windows.Interactivity;
 
     using GraphX.Controls;
-
+    using Models;
     using Orc.GraphExplorer.Views.Base;
+    using ViewModels;
 
     public class RelayoutBehavior : BehaviorBase<GraphAreaViewBase>
     {
@@ -35,10 +36,11 @@ namespace Orc.GraphExplorer.Behaviors
         {
             ShowAllEdgesLabels(true);
             FitToBounds();
-            var filterable = AssociatedObject.ViewModel as IFilterable;
-            if (filterable != null)
+            var areaViewModel = AssociatedObject.ViewModel as GraphAreaViewModel;
+            if (areaViewModel != null)
             {
-                filterable.UpdateFilterSource();
+                var filter = areaViewModel.ToolSetViewModel.Toolset.Filter;
+                filter.ChangeFilterSource(filter.GraphLogic.Graph.Vertices);
             }
         }
 
